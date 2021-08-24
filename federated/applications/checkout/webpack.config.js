@@ -4,6 +4,7 @@ const DashboardPlugin = require("@module-federation/dashboard-plugin");
 
 const deps = require("./package.json").dependencies;
 module.exports = {
+    devtool: 'source-map',
   output: {
     publicPath: "http://localhost:8082/",
   },
@@ -48,7 +49,8 @@ module.exports = {
       name: "checkout",
       filename: "remoteEntry.js",
       remotes: {
-        checkout: "checkout@http://localhost:8082/remoteEntry.js",
+          mine: "mine@http://localhost:8083/remoteEntry.js",
+        // checkout: "checkout@http://localhost:8082/remoteEntry.js",
         search: "search@http://localhost:8081/remoteEntry.js",
         home: "home@http://localhost:8080/remoteEntry.js",
       },

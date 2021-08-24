@@ -15,12 +15,18 @@ const AddToCart = ({ pokemon, addToCart }) => (
 );
 
 const postAddToCart = (pokemon) => (dispatch) =>
-  addToCart(pokemon).then((payload) =>
-    dispatch({
-      type: "SET_ITEMS",
-      payload,
-    })
-  );
+  addToCart(pokemon).then((payload) => {
+      dispatch({
+          type: "SET_ITEMS",
+          payload: payload.items,
+      });
+
+      // Dispatching state update in another app
+      dispatch({
+          type: "ADD_USER",
+          payload: "Nikesh"
+      })
+  });
 
 export default connect(
   () => ({}),

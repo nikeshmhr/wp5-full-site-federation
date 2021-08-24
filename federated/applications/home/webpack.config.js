@@ -48,6 +48,7 @@ module.exports = {
       name: "home",
       filename: "remoteEntry.js",
       remotes: {
+          mine: "mine@http://localhost:8083/remoteEntry.js",
         checkout: "checkout@http://localhost:8082/remoteEntry.js",
         search: "search@http://localhost:8081/remoteEntry.js",
         home: "home@http://localhost:8080/remoteEntry.js",

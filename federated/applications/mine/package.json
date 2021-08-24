@@ -1,15 +1,12 @@
 {
-  "name": "checkout",
+  "name": "mine",
   "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
     "start:live": "webpack-dev-server --open --mode development --liveReload"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
@@ -18,7 +15,6 @@
     "babel-loader": "8.1.0",
     "css-loader": "^3.5.3",
     "html-webpack-plugin": "^4.5.0",
-    "redux-devtools-extension": "^2.13.9",
     "style-loader": "1.2.1",
     "webpack": "5.0.0",
     "webpack-cli": "3.3.11",
@@ -33,7 +29,6 @@
     "react-query": "^1.5.7",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux": "^4.0.5"
   }
 }
