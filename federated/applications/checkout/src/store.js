@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import mineReducer from 'mine/reducer';
 import { getCartItems } from "./checkout";
+import adminReducer from 'admin/reducer';
 
 const reducer = (state = [], { type, payload }) => {
   switch (type) {
@@ -14,7 +15,8 @@ const reducer = (state = [], { type, payload }) => {
 
 const combinedReducer = combineReducers({
     items: reducer,
-    users: mineReducer
+    users: mineReducer,
+    admin: adminReducer
 });
 
 const composeEnhancers = process.env.NODE_ENV !== 'production' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose : compose;

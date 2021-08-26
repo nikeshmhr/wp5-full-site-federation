@@ -4,8 +4,9 @@ const DashboardPlugin = require("@module-federation/dashboard-plugin");
 
 const deps = require("./package.json").dependencies;
 module.exports = {
+    devtool: 'source-map',
     output: {
-        publicPath: "http://localhost:8083/",
+        publicPath: "http://localhost:8084/",
     },
 
     resolve: {
@@ -13,7 +14,7 @@ module.exports = {
     },
 
     devServer: {
-        port: 8083,
+        port: 8084,
         historyApiFallback: true,
     },
 
@@ -45,18 +46,19 @@ module.exports = {
 
     plugins: [
         new ModuleFederationPlugin({
-            name: "mine",
+            name: "admin",
             filename: "remoteEntry.js",
             remotes: {
-                admin: "admin@http://localhost:8084/remoteEntry.js",
-                // mine: "mine@http://localhost:8083/remoteEntry.js",
+                mine: "mine@http://localhost:8083/remoteEntry.js",
                 checkout: "checkout@http://localhost:8082/remoteEntry.js",
                 search: "search@http://localhost:8081/remoteEntry.js",
                 home: "home@http://localhost:8080/remoteEntry.js",
             },
             exposes: {
-                "./Mine": "./src/MineContent",
-                "./reducer": "./src/reducer"
+                "./Admin": "./src/AdminPage",
+                "./IsAdminWidget": "./src/IsAdminWidget",
+                "./reducer": "./src/reducer",
+                "./ToggleAdmin": "./src/ToggleAdmin"
             },
             shared: {
                 ...deps,
@@ -76,7 +78,7 @@ module.exports = {
                 source: {
                     url: "http://github.com",
                 },
-                remote: "http://localhost:8083/remoteEntry.js",
+                remote: "http://localhost:8081/remoteEntry.js",
             },
         }),
         new HtmlWebPackPlugin({

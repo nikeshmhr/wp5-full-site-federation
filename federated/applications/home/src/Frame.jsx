@@ -3,11 +3,16 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { connect, useSelector } from "react-redux";
 import { Cart } from "react-bootstrap-icons";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
 
 const Home = React.lazy(() => import("home/Home"));
 const Search = React.lazy(() => import("search/Search"));
 const Checkout = React.lazy(() => import("checkout/Checkout"));
 const Mine = React.lazy(() => import("mine/Mine"));
+const OAuth = React.lazy(() => import("./oauth/OAuth"));
+const Admin = React.lazy(() => import('admin/Admin'));
+const IsAdminWidget = React.lazy(() => import('admin/IsAdminWidget'));
 
 const HomeRoute = () => (
   <React.Suspense fallback={<div />}>
@@ -30,8 +35,21 @@ const MineRoute = () => (
     </React.Suspense>
 );
 
+const AdminRoute = () => (
+    <React.Suspense fallback={<div/>}>
+        <Admin />
+    </React.Suspense>
+);
+
+const IsAdminWidgetSuspense = () => (
+    <React.Suspense fallback={"loading"}>
+        <IsAdminWidget />
+    </React.Suspense>
+)
+
 const Frame = ({ page = "home" }) => {
     const items = useSelector(state => state.items);
+    const isAdmin = useSelector(state => state.admin);
     return (
             <Router>
                 <Container>
@@ -59,6 +77,18 @@ const Frame = ({ page = "home" }) => {
                                         Mine
                                     </Link>
                                 </Nav.Link>
+                                {
+                                    isAdmin && <Nav.Link>
+                                        <Link to="/admin" style={{ color: "white" }}>
+                                            Admin
+                                        </Link>
+                                    </Nav.Link>
+                                }
+                                <Nav.Link>
+                                <div style={{ color: "white", marginLeft: '200px' }}>
+                                    <IsAdminWidgetSuspense/>
+                                </div>
+                                </Nav.Link>
                             </Nav>
                             <Link
                                     to="/checkout"
@@ -78,6 +108,12 @@ const Frame = ({ page = "home" }) => {
                     </Navbar>
                     <Container>
                         <Switch>
+                            {/*<PublicRoute path="/login" component={OAuth} />*/}
+                            {/*<PrivateRoute path="/search" component={SearchRoute} exact />*/}
+                            {/*<PrivateRoute path="/checkout" component={CheckoutRoute} exact />*/}
+                            {/*<PrivateRoute path="/mine" component={MineRoute} exact />*/}
+                            {/*<PrivateRoute path="/" component={HomeRoute} exact />*/}
+
                             <Route path="/" exact>
                                 <HomeRoute />
                             </Route>
@@ -89,6 +125,9 @@ const Frame = ({ page = "home" }) => {
                             </Route>
                             <Route path="/mine">
                                 <MineRoute />
+                            </Route>
+                            <Route path="/admin">
+                                <AdminRoute />
                             </Route>
                         </Switch>
                     </Container>

@@ -1,16 +1,12 @@
 {
-  "name": "home",
+  "name": "admin",
   "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",
-    "cypress:open": "cypress open",
     "start": "webpack-dev-server --open --mode development",
     "start:live": "webpack-dev-server --open --mode development --liveReload"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
@@ -18,8 +14,6 @@
     "@module-federation/dashboard-plugin": "^1.0.0",
     "babel-loader": "8.1.0",
     "css-loader": "^3.5.3",
-    "cypress": "^4.8.0",
-    "dotenv-webpack": "^7.0.3",
     "html-webpack-plugin": "^4.5.0",
     "style-loader": "1.2.1",
     "webpack": "5.0.0",
@@ -27,8 +21,6 @@
     "webpack-dev-server": "3.11.0"
   },
   "dependencies": {
-    "aws-amplify": "^4.2.4",
-    "aws-amplify-react": "^5.0.10",
     "bootstrap": "^4.5.0",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.1",
