@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { connect, useSelector } from "react-redux";
 import { Cart } from "react-bootstrap-icons";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 
@@ -126,9 +126,12 @@ const Frame = ({ page = "home" }) => {
                             <Route path="/mine">
                                 <MineRoute />
                             </Route>
-                            <Route path="/admin">
-                                <AdminRoute />
-                            </Route>
+                            {
+                                isAdmin ?
+                                <Route path="/admin">
+                                <AdminRoute/>
+                            </Route>: <Redirect to="/" />
+                            }
                         </Switch>
                     </Container>
                 </Container>

@@ -55,7 +55,7 @@ module.exports = {
                 home: "home@http://localhost:8080/remoteEntry.js",
             },
             exposes: {
-                "./Admin": "./src/AdminPage",
+                "./Admin": "./src/AdminContent",
                 "./IsAdminWidget": "./src/IsAdminWidget",
                 "./reducer": "./src/reducer",
                 "./ToggleAdmin": "./src/ToggleAdmin"

@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import AdminContent from './AdminContent';
 
 import store from "checkout/store";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import Frame from "home/Frame";
 
 const AdminPage = () => (
         <Provider store={store}>
-            <AdminContent />
+            <Frame page="admin" />
         </Provider>
 );
 

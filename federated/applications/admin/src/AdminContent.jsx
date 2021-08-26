@@ -2,7 +2,7 @@ import React from 'react';
 
 function AdminContent() {
     return <>
-        <h1>This is just random admin page content that doesn't share same frame with other apps</h1>
+        <h1>This is just random admin page content. I shouldn't be accessible by non admins</h1>
         </>
 }
 
